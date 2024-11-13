@@ -38,7 +38,7 @@
   header {
   height: 3rem;
   display: flex;
-  background-color: black;
+  background-color: rgb(255, 8, 8);
   color: #fff;
   font-size: 1.2rem;
   padding-left: 2rem;
