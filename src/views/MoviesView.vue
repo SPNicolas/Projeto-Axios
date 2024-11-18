@@ -2,15 +2,21 @@
   import { ref, onMounted } from 'vue';
   import api from '@/plugins/axios';
   import Loading from 'vue-loading-overlay';
+  import { useGenreStore } from '@/stores/genre';
+
+  const genreStore = useGenreStore();
+
 
   const isLoading = ref(false);
 
   const genres = ref([]);
 
   onMounted(async () => {
-    const response = await api.get('genre/movie/list?language=pt-BR');
-    genres.value = response.data.genres;
-  });
+  isLoading.value = true;
+  await genreStore.getAllGenres('movie');
+  isLoading.value = false;
+});
+
 
   const movies = ref([]);
 
@@ -25,22 +31,26 @@
   movies.value = response.data.results
   isLoading.value = false;
 };
+const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
+
 
 
 const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
+
 </script>
 <template>
   <div class="container">
     <h1>Filmes</h1>
     <ul class="genre-list">
       <li
-      v-for="genre in genres"
-      :key="genre.id"
-      @click="listMovies(genre.id)"
-      class="genre-item"
-    >
-      {{ genre.name }}
-    </li>
+  v-for="genre in genreStore.genres"
+  :key="genre.id"
+  @click="listMovies(genre.id)"
+  class="genre-item"
+>
+   {{ genre.name }} 
+</li>
+
     </ul>
     
     <loading v-model:active="isLoading" is-full-page />
@@ -52,16 +62,19 @@ const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
         :alt="movie.title"
       />
       <p class="movie-genres">
-    <span
-      v-for="genre_id in movie.genre_ids"
-      :key="genre_id"
-      @click="listMovies(genre_id)"
-    >
-      {{ getGenreName(genre_id) }} 
-    </span>
-  </p>
+    
+<span
+  v-for="genre_id in movie.genre_ids"
+  :key="genre_id"
+  @click="listMovies(genre_id)"
+>
+  {{ genreStore.getGenreName(genre_id) }}
+</span>
 
-      
+
+  </p>
+  <p class="movie-release-date">{{ formatDate(movie.release_date) }}</p>
+    
     </div>
   </div>
 </div>
@@ -83,7 +96,7 @@ const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name
   background-color: #387250;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #ffffff;
 }
 
 .genre-item:hover {
