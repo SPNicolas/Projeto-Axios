@@ -20,6 +20,8 @@
 </template>
 
 <style scoped>
+
+
   .genre-list {
     display: flex;
     justify-content: center;

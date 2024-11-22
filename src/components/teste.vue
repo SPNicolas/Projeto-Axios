@@ -14,7 +14,7 @@
 </script>
 
 <template>
-      <header>
+  <header>
     <nav>
       <router-link to="/">Home</router-link>
       <router-link to="/filmes">Filmes</router-link>
@@ -24,35 +24,48 @@
   <main>
     <router-view />
   </main>
-
 </template>
 
 <style scoped>
- nav {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1rem;
-    column-gap: 2rem;
-  }
 
-  header {
-  height: 3rem;
+
+
+
+header {
+  height: 4rem;
   display: flex;
-  background-color: rgb(255, 8, 8);
+  background-color: #000; 
   color: #fff;
   font-size: 1.2rem;
-  padding-left: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  border: 1px solid white;
 }
 
+
 nav {
-  column-gap: 2rem;
-  margin-bottom: 0;
   display: flex;
   align-items: center;
+  column-gap: 2rem;
 }
 
 nav a {
   text-decoration: none;
-  color: #fff;
+  color: #fff; 
+  font-weight: 600; 
+  letter-spacing: 1px; 
 }
+
+nav a:hover {
+  color: #FF9900;
+  transition: color 0.2s ease-in-out; 
+}
+
+nav a:active {
+  color: #FF6600; 
+}
+
+
 </style>
