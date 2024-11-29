@@ -91,7 +91,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
   list-style: none;
   padding: 0;
   margin: 30px; 
@@ -100,7 +100,7 @@
 /* Estilo dos itens de gêneros */
 .genre-item {
   background-color: #FF0000; /* Vermelho do YouTube */
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   color: #ffffff;
   font-weight: bold;
@@ -108,8 +108,9 @@
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #CC0000; /* Vermelho mais escuro no hover */
+  background-color: #331515; /* Vermelho mais escuro no hover */
   box-shadow: 0 0 0.5rem #FF0000;
+  transition: 0.5s;
 }
 
 /* Estilo para a lista de filmes */
@@ -120,7 +121,7 @@
   margin: 0 10px 35px 10px; /* Remover margem extra nas laterais */
   flex-grow: 1; 
   justify-content: center; 
-  overflow-y: auto; 
+
 }
 
 
@@ -132,6 +133,7 @@
   box-shadow: 0 0 0.5rem #ffdada;
   background-color: #242323;
   transition: transform 0.3s ease-in-out; 
+  margin: 20px;
 }
 
 
@@ -145,12 +147,10 @@
   border-radius: 0.5rem;
   box-shadow: 0 0 0.9rem #e92626;
   margin: 10px;
-  transition: transform 0.3s ease-in-out; 
+
 }
 
-.movie-card:hover img {
-  transform: scale(1.1);
-}
+
 
 .movie-details {
   padding: 0 0.5rem;
@@ -172,7 +172,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  gap: 0.2rem;
+  gap: 0.8rem;
 }
 
 .movie-genres span {
