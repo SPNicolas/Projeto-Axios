@@ -16,6 +16,12 @@ const routes = [
     name: 'TV',
     component: () => import('../views/TvView.vue'),
   },
+  {
+    path: '/movie/:id',  // Rota dinâmica para detalhes do filme
+    name: 'MovieDetails',
+    component: () => import('../views/MovieDetails.vue'), // Página de detalhes do filme
+    props: true,  // Passa o parâmetro id como propriedade para o componente
+  },
 ];
 
 const router = createRouter({
@@ -24,4 +30,8 @@ const router = createRouter({
 });
 
 export default router;
+
+
+
+
 

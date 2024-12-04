@@ -1,39 +1,45 @@
 <script setup>
-  import { ref, onMounted } from 'vue';
-  import api from '@/plugins/axios';
-  import Loading from 'vue-loading-overlay';
-  import { useGenreStore } from '@/stores/genre';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'; // Importando o useRouter
+import api from '@/plugins/axios';
+import Loading from 'vue-loading-overlay';
+import { useGenreStore } from '@/stores/genre';
 
-  const genreStore = useGenreStore();
+const genreStore = useGenreStore();
+const router = useRouter();  // Instanciando o router
 
-  const isLoading = ref(false);
-  const genres = ref([]);
+const isLoading = ref(false);
+const genres = ref([]);
 
-  onMounted(async () => {
-    isLoading.value = true;
-    await genreStore.getAllGenres('movie');
-    isLoading.value = false;
+onMounted(async () => {
+  isLoading.value = true;
+  await genreStore.getAllGenres('movie');
+  isLoading.value = false;
+});
+
+const movies = ref([]);
+
+const listMovies = async (genreId) => {
+  isLoading.value = true;
+  const response = await api.get('discover/movie', {
+    params: {
+      with_genres: genreId,
+      language: 'pt-BR'
+    }
   });
+  movies.value = response.data.results;
+  isLoading.value = false;
+};
 
-  const movies = ref([]);
+const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
 
-  const listMovies = async (genreId) => {
-    isLoading.value = true;
-    const response = await api.get('discover/movie', {
-      params: {
-        with_genres: genreId,
-        language: 'pt-BR'
-      }
-    });
-    movies.value = response.data.results;
-    isLoading.value = false;
-  };
+const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name;
 
-  const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
-
-  const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name;
+// Método para navegar até a página de detalhes do filme
+const goToMovieDetails = (movieId) => {
+  router.push({ name: 'MovieDetails', params: { id: movieId } }); // Navega para a página de detalhes com o id do filme
+};
 </script>
-
 <template>
   <div class="container">
     
@@ -51,7 +57,12 @@
     <loading v-model:active="isLoading" is-full-page />
     
     <div class="movie-list">
-      <div v-for="movie in movies" :key="movie.id" class="movie-card">
+      <div 
+        v-for="movie in movies" 
+        :key="movie.id" 
+        class="movie-card"
+        @click="goToMovieDetails(movie.id)"   Evento de clique para navegação 
+      >
         <img
           :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
           :alt="movie.title"
@@ -67,8 +78,8 @@
         </p>
         <p class="movie-release-date">{{ formatDate(movie.release_date) }}</p>
       </div>
-    </div>
   </div>
+</div>
 </template>
 
 <style scoped>
