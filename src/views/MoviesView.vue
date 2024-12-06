@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router'; // Importando o useRouter
+import { useRouter } from 'vue-router';
 import api from '@/plugins/axios';
 import Loading from 'vue-loading-overlay';
 import { useGenreStore } from '@/stores/genre';
 
 const genreStore = useGenreStore();
-const router = useRouter();  // Instanciando o router
+const router = useRouter();
 
 const isLoading = ref(false);
 const genres = ref([]);
@@ -35,9 +35,8 @@ const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
 
 const getGenreName = (id) => genres.value.find((genre) => genre.id === id).name;
 
-// Método para navegar até a página de detalhes do filme
 const goToMovieDetails = (movieId) => {
-  router.push({ name: 'MovieDetails', params: { id: movieId } }); // Navega para a página de detalhes com o id do filme
+  router.push({ name: 'MovieDetails', params: { id: movieId } }); 
 };
 </script>
 <template>
