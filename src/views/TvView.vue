@@ -64,15 +64,15 @@ onMounted(async () => {
       </li>
     </ul>
 
-    <!-- Indicador de carregamento -->
+
     <loading v-model:active="isLoading" is-full-page />
 
-    <!-- Mensagem de erro -->
+
     <div v-if="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
 
-    <!-- Lista de programas de TV -->
+>
     <div v-if="!errorMessage && tvShows.length" class="tv-list">
       <div v-for="tv in tvShows" :key="tv.id" class="tv-card">
         <img
@@ -87,7 +87,7 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- Mensagem quando não há programas de TV -->
+
     <div v-if="!isLoading && !tvShows.length && !errorMessage" class="no-tv">
       Nenhum programa de TV encontrado.
     </div>
@@ -95,87 +95,5 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/* Estilo para o TvView */
-.container {
-  background-color: black;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.genre-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 30px;
-}
-
-.genre-item {
-  background-color: #ff0000;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.genre-item:hover {
-  background-color: #cc0000;
-  transition: 0.3s;
-}
-
-.tv-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.tv-card {
-  background-color: #242323;
-  width: 200px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-  text-align: center;
-  overflow: hidden;
-  transition: transform 0.3s;
-}
-
-.tv-card:hover {
-  transform: scale(1.05);
-}
-
-.tv-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-.tv-details {
-  padding: 10px;
-}
-
-.tv-title {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.tv-original-name,
-.tv-release-date {
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-.no-tv {
-  margin-top: 20px;
-  color: #ccc;
-}
-
-.error-message {
-  color: red;
-  margin-top: 20px;
-}
+@import "../assets/sass/_tvPrograms.scss";
 </style>
