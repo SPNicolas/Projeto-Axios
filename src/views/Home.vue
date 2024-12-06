@@ -55,6 +55,7 @@ onMounted(async () => {
 <template>
   <div class="home-container">
     <h1>Seja Bem-Vindo</h1>
+    <h3>Aqui você vai encontrar os melhores filmes e séries do mundo</h3>
 
     <!-- Indicador de carregamento -->
     <loading v-model:active="isLoading" is-full-page />
@@ -65,6 +66,7 @@ onMounted(async () => {
     </div>
 
     <!-- Lista de filmes em fila horizontal -->
+    <p class="subtitle">Filmes</p>
     <div v-if="!errorMessage && movies.length" class="movie-carousel">
       <div v-for="movie in movies" :key="movie.id" class="movie-item">
         <img
@@ -87,8 +89,20 @@ onMounted(async () => {
   background-color: black;
   color: white;
   padding: 20px;
+}
+
+h3, h1 {
+  margin-bottom: 40px;
   text-align: center;
 }
+
+.subtitle {
+  font-size: 30px;
+  color:#ff0000;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
 
 .movie-carousel {
   display: flex;

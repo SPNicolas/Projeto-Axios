@@ -19,6 +19,7 @@
       <router-link to="/">Home</router-link>
       <router-link to="/filmes">Filmes</router-link>
       <router-link to="/tv">Programas de TV</router-link>
+      <router-link to="/spiderMan">Homem-Aranha</router-link>
     </nav>
   </header>
   <main>
