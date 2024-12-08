@@ -24,7 +24,7 @@
       <h2 class="section-title">Séries</h2>
       <div class="series-list">
         <div v-for="serie in series" :key="serie.id" class="serie-item">
-          <router-link :to="`/serie-details/${serie.id}`">
+          <router-link :to="`/serie/${serie.id}`">
             <img
               :src="serie.poster_path ? `https://image.tmdb.org/t/p/w200${serie.poster_path}` : '/default-movie.png'"
               :alt="serie.name"

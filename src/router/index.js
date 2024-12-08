@@ -19,20 +19,20 @@ const routes = [
   {
     path: '/movie/:id',
     name: 'MovieDetails',
-    component: () => import('../views/MovieDetailsView.vue'), 
-    props: true,  
-  },
-  {
-    path: '/serie-details/:id',
-    name: 'SerieDetails',
-    component: () => import('../views/SerieDetailsView.vue'), 
-    props: true,  
+    component: () => import('../views/MovieDetailsView.vue'),
+    props: true,
   },
   {
     path: '/spiderMan',
     name: 'Spider-Man',
     component: () => import('../views/SpiderManView.vue'),
-  }
+  },
+  {
+    path: '/serie/:id',
+    name: 'SerieDetails',
+    component: () => import('../views/SerieDetailsView.vue'),
+    props: true,
+  },
 ];
 
 const router = createRouter({
@@ -41,6 +41,7 @@ const router = createRouter({
 });
 
 export default router;
+
 
 
 
