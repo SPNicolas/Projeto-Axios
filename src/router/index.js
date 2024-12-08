@@ -23,6 +23,12 @@ const routes = [
     props: true,  
   },
   {
+    path: '/serie-details/:id',
+    name: 'SerieDetails',
+    component: () => import('../views/SerieDetailsView.vue'), 
+    props: true,  
+  },
+  {
     path: '/spiderMan',
     name: 'Spider-Man',
     component: () => import('../views/SpiderManView.vue'),

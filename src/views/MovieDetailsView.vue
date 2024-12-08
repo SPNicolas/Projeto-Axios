@@ -1,43 +1,3 @@
-<template>
-  <div class="movie-page" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }">
-    <div class="movie-overlay">
-      <div class="movie-content">
-        <!-- Título -->
-        <h1 class="movie-title">{{ movie.title }}</h1>
-        <!-- Subtítulo -->
-        <p class="movie-subtitle">Um amuleto mudará a vida dela para sempre.</p>
-        <!-- Destaque -->
-        <p class="movie-highlight">🔥 Brasil: Top 5 de hoje</p>
-        <!-- Descrição -->
-        <p class="movie-description">
-          {{ movie.overview }}
-        </p>
-        <!-- Botões -->
-        <div class="movie-buttons">
-          <a v-if="trailerUrl" :href="trailerUrl" target="_blank" class="btn-watch">▶ Assistir Trailer</a>
-          <button class="btn-more">Mais informações</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Elenco -->
-  <div class="movie-cast">
-    <h2 class="cast-title">Elenco</h2>
-    <div class="cast-list">
-      <div class="cast-item" v-for="actor in cast" :key="actor.id">
-        <img
-          :src="actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : '/default-avatar.png'"
-          :alt="actor.name"
-          class="cast-image"
-        />
-        <p class="cast-name">{{ actor.name }}</p>
-        <p class="cast-character">como {{ actor.character }}</p>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
@@ -79,7 +39,45 @@ onMounted(async () => {
   }
 });
 </script>
+<template>
+  <div class="movie-page" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }">
+    <div class="movie-overlay">
+      <div class="movie-content">
+        <!-- Título -->
+        <h1 class="movie-title">{{ movie.title }}</h1>
+        <!-- Subtítulo -->
+        <p class="movie-subtitle">Um amuleto mudará a vida dela para sempre.</p>
+        <!-- Destaque -->
+        <p class="movie-highlight">🔥 Brasil: Top 5 de hoje</p>
+        <!-- Descrição -->
+        <p class="movie-description">
+          {{ movie.overview }}
+        </p>
+        <!-- Botões -->
+        <div class="movie-buttons">
+          <a v-if="trailerUrl" :href="trailerUrl" target="_blank" class="btn-watch">▶ Assistir Trailer</a>
+          <button class="btn-more">Mais informações</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Elenco -->
+  <div class="movie-cast">
+    <h2 class="cast-title">Elenco</h2>
+    <div class="cast-list">
+      <div class="cast-item" v-for="actor in cast" :key="actor.id">
+        <img
+          :src="actor.profile_path ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` : '/default-avatar.png'"
+          :alt="actor.name"
+          class="cast-image"
+        />
+        <p class="cast-name">{{ actor.name }}</p>
+        <p class="cast-character">como {{ actor.character }}</p>
+      </div>
+    </div>
+  </div>
+</template>
 <style scoped>
 /* Estilo principal */
 .movie-page {
