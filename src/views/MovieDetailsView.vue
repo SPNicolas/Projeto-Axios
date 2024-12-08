@@ -104,7 +104,7 @@ onMounted(async () => {
 }
 
 .movie-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #e50914;
   margin-bottom: 1rem;

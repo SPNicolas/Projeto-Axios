@@ -10,10 +10,10 @@
       <div class="characters-list">
         <h2>Personagens</h2>
         <ul>
-          <li v-for="character in serieDetails.characters" :key="character.id">
-            {{ character.name }}
-          </li>
-        </ul>
+  <li v-for="character in serieDetails.characters" :key="character.id">
+    {{ character.name }}
+  </li>
+</ul>
       </div>
     </div>
   </template>
@@ -33,25 +33,29 @@
   });
   
   onMounted(async () => {
-    // Fetch series details
-    const serieResponse = await api.get(`/tv/${serieId}`, {
-      params: {
-        language: 'pt-BR',
-      },
-    });
-  
-    serieDetails.value.name = serieResponse.data.name;
-    serieDetails.value.number_of_seasons = serieResponse.data.number_of_seasons;
-  
-    // Fetch characters (credits)
-    const creditsResponse = await api.get(`/tv/${serieId}/credits`, {
-      params: {
-        language: 'pt-BR',
-      },
-    });
-  
-    serieDetails.value.characters = creditsResponse.data.cast;
+  // Fetch series details
+  const serieResponse = await api.get(`/tv/${serieId}`, {
+    params: {
+      language: 'pt-BR',
+    },
   });
+
+  serieDetails.value.name = serieResponse.data.name;
+  serieDetails.value.number_of_seasons = serieResponse.data.number_of_seasons;
+
+  // Fetch characters (credits)
+  const creditsResponse = await api.get(`/tv/${serieId}/credits`, {
+    params: {
+      language: 'pt-BR',
+    },
+  });
+
+  // Mapear os nomes dos personagens
+  serieDetails.value.characters = creditsResponse.data.cast.map(castMember => ({
+    id: castMember.id,
+    name: castMember.character, // Nome do personagem
+  }));
+});
   </script>
   
   <style scoped>
