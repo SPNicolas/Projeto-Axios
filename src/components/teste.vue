@@ -42,6 +42,9 @@ header {
   color: #fff;
   padding: 0.5rem 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  align-items: center;
+  display: flex;
 }
 
 .nav-container {
@@ -94,7 +97,7 @@ nav a:active {
     height: 400px;
     flex-direction: column;
     position: absolute;
-    top: 8%;
+    top: 5%;
     left: 0;
     width: 100%;
     background-color: #000;

@@ -49,7 +49,7 @@ onMounted(async () => {
   // Fetching Spider-Man movies
   const moviesResponse = await api.get('/search/movie', {
     params: {
-      query: 'Liga da Justiça',
+      query: 'Homem Aranha',
       language: 'pt-BR',
     },
   });
@@ -58,7 +58,7 @@ onMounted(async () => {
   // Fetching Spider-Man series
   const seriesResponse = await api.get('/search/tv', {
     params: {
-      query: 'Dragon ball',
+      query: 'Homem Aranha',
       language: 'pt-BR',
     },
   });
