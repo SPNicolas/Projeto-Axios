@@ -1,8 +1,34 @@
+<script setup>
+import { ref, onMounted } from 'vue';
+import api from '@/plugins/axios';
+
+const movies = ref([]);
+const series = ref([]);
+
+onMounted(async () => {
+
+  const moviesResponse = await api.get('/search/movie', {
+    params: {
+      query: 'Homem Aranha',
+      language: 'pt-BR',
+    },
+  });
+  movies.value = moviesResponse.data.results;
+
+
+  const seriesResponse = await api.get('/search/tv', {
+    params: {
+      query: 'Homem Aranha',
+      language: 'pt-BR',
+    },
+  });
+  series.value = seriesResponse.data.results;
+});
+</script>
 <template>
   <div class="spiderman-page">
     <h1 class="page-title">Filmes e Séries do Homem-Aranha</h1>
 
-    <!-- Seção de Filmes -->
     <section class="movies-section">
       <h2 class="section-title">Filmes</h2>
       <div class="movies-list">
@@ -19,7 +45,7 @@
       </div>
     </section>
 
-    <!-- Seção de Séries -->
+
     <section class="series-section">
       <h2 class="section-title">Séries</h2>
       <div class="series-list">
@@ -37,34 +63,6 @@
     </section>
   </div>
 </template>
-
-<script setup>
-import { ref, onMounted } from 'vue';
-import api from '@/plugins/axios';
-
-const movies = ref([]); // Lista de filmes
-const series = ref([]); // Lista de séries
-
-onMounted(async () => {
-  // Fetching Spider-Man movies
-  const moviesResponse = await api.get('/search/movie', {
-    params: {
-      query: 'Homem Aranha',
-      language: 'pt-BR',
-    },
-  });
-  movies.value = moviesResponse.data.results;
-
-  // Fetching Spider-Man series
-  const seriesResponse = await api.get('/search/tv', {
-    params: {
-      query: 'Homem Aranha',
-      language: 'pt-BR',
-    },
-  });
-  series.value = seriesResponse.data.results;
-});
-</script>
 
 <style scoped>
 .spiderman-page {

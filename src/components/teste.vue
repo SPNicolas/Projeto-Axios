@@ -4,7 +4,7 @@
 
   const moviesGenres = ref([]);
   const TVGenres = ref([]);
-  const isMenuOpen = ref(false); // Controle do estado do menu
+  const isMenuOpen = ref(false); 
 
   onMounted(async () => {
     let response = await api.get('genre/movie/list?language=pt-BR');
@@ -36,7 +36,6 @@
 </template>
 
 <style scoped>
-/* Header principal */
 header {
   background-color: #000;
   color: #fff;
@@ -87,7 +86,6 @@ nav a:active {
   color: #FF6600;
 }
 
-/* Estilo responsivo */
 @media (max-width: 425px) {
   .menu-toggle {
     display: block;
@@ -103,11 +101,11 @@ nav a:active {
     background-color: #000;
     overflow: hidden;
     max-height: 0;
-    z-index: 99; /* Coloca o menu acima de outros elementos */
+    z-index: 99;
   }
 
   nav.open {
-    max-height: 350px; /* Altura máxima do menu quando aberto */
+    max-height: 350px;
   }
 
   nav a {

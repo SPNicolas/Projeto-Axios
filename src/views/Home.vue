@@ -57,15 +57,15 @@ onMounted(async () => {
     <h1>Seja Bem-Vindo</h1>
     <h3>Aqui você vai encontrar os melhores filmes e séries do mundo</h3>
 
-    <!-- Indicador de carregamento -->
+
     <loading v-model:active="isLoading" is-full-page />
 
-    <!-- Mensagem de erro -->
+
     <div v-if="errorMessage" class="error-message">
       {{ errorMessage }}
     </div>
 
-    <!-- Lista de filmes em fila horizontal -->
+
     <p class="subtitle">Filmes</p>
     <div v-if="!errorMessage && movies.length" class="movie-carousel">
       <div v-for="movie in movies" :key="movie.id" class="movie-item">
@@ -77,7 +77,6 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- Mensagem quando não há filmes -->
     <div v-if="!isLoading && !movies.length && !errorMessage" class="no-movies">
       Nenhum filme encontrado.
     </div>

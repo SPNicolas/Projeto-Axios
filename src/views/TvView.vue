@@ -11,10 +11,10 @@ const genres = ref([]);
 const tvShows = ref([]);
 const errorMessage = ref(null);
 
-// Função para formatar datas em pt-BR
+
 const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
 
-// Buscar programas de TV por gênero
+
 const listTvShows = async (genreId) => {
   try {
     isLoading.value = true;
@@ -36,11 +36,11 @@ const listTvShows = async (genreId) => {
   }
 };
 
-// Carregamento inicial de gêneros
+
 onMounted(async () => {
   try {
     isLoading.value = true;
-    await genreStore.getAllGenres('tv'); // Obter gêneros para programas de TV
+    await genreStore.getAllGenres('tv');
   } catch (err) {
     console.error('Erro ao carregar gêneros:', err);
     errorMessage.value = 'Não foi possível carregar os gêneros.';

@@ -5,7 +5,7 @@ import api from '@/plugins/axios';
 
 const route = useRoute();
 const movie = ref({});
-const cast = ref([]); // Adicionando elenco
+const cast = ref([]);
 const trailerUrl = ref('');
 
 onMounted(async () => {
@@ -25,7 +25,7 @@ onMounted(async () => {
       language: 'pt-BR',
     },
   });
-  cast.value = castResponse.data.cast.slice(0, 10); // Limitar a 10 atores principais
+  cast.value = castResponse.data.cast.slice(0, 10);
 
   // Buscando trailer do filme
   const videosResponse = await api.get(`movie/${movieId}/videos`, {
@@ -43,17 +43,12 @@ onMounted(async () => {
   <div class="movie-page" :style="{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }">
     <div class="movie-overlay">
       <div class="movie-content">
-        <!-- Título -->
         <h1 class="movie-title">{{ movie.title }}</h1>
-        <!-- Subtítulo -->
         <p class="movie-subtitle">Um amuleto mudará a vida dela para sempre.</p>
-        <!-- Destaque -->
         <p class="movie-highlight">🔥 Brasil: Top 5 de hoje</p>
-        <!-- Descrição -->
         <p class="movie-description">
           {{ movie.overview }}
         </p>
-        <!-- Botões -->
         <div class="movie-buttons">
           <a v-if="trailerUrl" :href="trailerUrl" target="_blank" class="btn-watch">▶ Assistir Trailer</a>
           <button class="btn-more">Mais informações</button>
