@@ -33,6 +33,11 @@ const routes = [
     component: () => import('../views/SerieDetailsView.vue'),
     props: true,
   },
+  {
+    path: '/barbie',
+    name: 'Barbie',
+    component: () => import('../views/BarbieView.vue'),
+  },
 ];
 
 const router = createRouter({

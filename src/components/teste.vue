@@ -27,6 +27,7 @@
         <router-link to="/filmes">Filmes</router-link>
         <router-link to="/tv">Programas de TV</router-link>
         <router-link to="/spiderMan">Homem-Aranha</router-link>
+        <router-link to="/barbie">Barbie</router-link>
       </nav>
     </div>
   </header>
