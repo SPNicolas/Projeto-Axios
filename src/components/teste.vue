@@ -93,7 +93,7 @@ nav a:active {
   }
 
   nav {
-    height: 400px;
+    height: 450px;
     flex-direction: column;
     position: absolute;
     top: 5%;
@@ -106,7 +106,7 @@ nav a:active {
   }
 
   nav.open {
-    max-height: 350px;
+    max-height: 500px;
   }
 
   nav a {

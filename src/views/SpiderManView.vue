@@ -76,13 +76,13 @@ onMounted(async () => {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: #e50914;
+  color: #9a0824;
 }
 
 .section-title {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #f5c518;
+  color: #0e4cfb;
 }
 
 .movies-list,
