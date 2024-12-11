@@ -44,7 +44,6 @@ onMounted(async () => {
     <div class="movie-overlay">
       <div class="movie-content">
         <h1 class="movie-title">{{ movie.title }}</h1>
-        <p class="movie-subtitle">Um amuleto mudará a vida dela para sempre.</p>
         <p class="movie-highlight">🔥 Brasil: Top 5 de hoje</p>
         <p class="movie-description">
           {{ movie.overview }}
