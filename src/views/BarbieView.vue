@@ -96,16 +96,16 @@ onMounted(async () => {
 .movie-item,
 .serie-item {
   text-align: center;
-  width: 150px;
+  width: 360px;
 }
 
 .movie-poster,
 .serie-poster {
-  width: 150px;
-  height: 225px;
-  border-radius: 8px;
+  width: 250px;
+  height: 325px;
+  border-radius: 5px;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 10px rgb(161, 39, 106);
   transition: transform 0.3s ease;
 }
 
